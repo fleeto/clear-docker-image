@@ -1,0 +1,17 @@
+{
+  "docker": {
+    "list_command": [
+      "docker",
+      "images",
+      "--format",
+      "'{{.ID}},{{.Repository}},{{.Tag}},{{.CreatedAt}},{{.Size}}'"
+    ],
+    "action_command": [
+      "docker"
+    ]
+  },
+  "sql": {
+    "none": "image_name = '<none>'",
+    "0.4.5": "image_tag = '0.4.5'"
+  }
+}
