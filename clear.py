@@ -51,7 +51,7 @@ def main(condition, hash_only, action):
     else:
         sql = "select image_id, image_name, image_tag, created, image_size from images where " + condition
         for row in cur.execute(sql):
-            if ("image_name" == "<none>"):
+            if (row[1] == "<none>"):
                 hash_list = hash_list + [row[0]]
             else:
                 hash_list = hash_list + [row[1] + ":" + row[2]]
