@@ -51,17 +51,18 @@ def main(condition, hash_only, action):
     else:
         sql = "select image_id, image_name, image_tag, created, image_size from images where " + condition
         for row in cur.execute(sql):
-            if (row[1] == "<none>"):
-                hash_list = hash_list + [row[0]]
-            else:
-                hash_list = hash_list + [row[1] + ":" + row[2]]
+            hash_list = hash_list + [row[0]]
             output_list += ["{}\t{}\t{}\t{}\t{}".format(
                 row[0], row[1], row[2], row[3], row[4])]
 
     if action != "none":
         for hash_value in hash_list:
             cmd = conf["docker"]["action_command"] + [action] + [hash_value]
-            subprocess.check_call(cmd)
+            try:
+                subprocess.check_call(cmd)
+            except:
+                continue
+
     else:
         for line in output_list:
             print line
