@@ -57,7 +57,7 @@ def main(condition, hash_only, action):
 
     if action != "none":
         for hash_value in hash_list:
-            cmd = conf["docker"]["action_command"] + [action] + [hash_value]
+            cmd = conf["docker"]["action_command"] + conf["docker"]["action"] + [hash_value]
             try:
                 subprocess.check_call(cmd)
             except:

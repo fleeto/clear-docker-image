@@ -8,7 +8,10 @@
     ],
     "action_command": [
       "docker"
-    ]
+    ],
+    "action": {
+      "rmi": ["rmi", "-f"]
+    }
   },
   "sql": {
     "none": "image_name = '<none>'",
